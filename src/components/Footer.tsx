@@ -15,12 +15,15 @@ export default function Footer() {
             <p className="text-gray-400 mb-4">
               Full Stack Developer & Computer Science Student specializing in building exceptional digital experiences.
             </p>
+            <p className="text-gray-400 font-hand text-lg transform -rotate-3 mb-4">
+              Available for freelance projects!
+            </p>
           </div>
           
           <div>
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'].map((link) => (
+              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Freelance', 'Contact'].map((link) => (
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase()}`} 

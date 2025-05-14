@@ -23,6 +23,7 @@ export default {
 				sans: ['Inter', 'sans-serif'],
 				display: ['Space Grotesk', 'sans-serif'],
 				mono: ['Fira Code', 'monospace'],
+				hand: ['Caveat', 'cursive'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
