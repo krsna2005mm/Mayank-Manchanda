@@ -86,12 +86,11 @@ export default function SkillsSection() {
                         </div>
                         <Progress
                           value={skill.level}
-                          className="h-2"
-                          indicatorClassName={
-                            index % 4 === 0 ? "bg-purple-gradient" :
-                            index % 4 === 1 ? "bg-blue-gradient" :
-                            index % 4 === 2 ? "bg-orange-gradient" :
-                            "bg-secondary"
+                          className={
+                            index % 4 === 0 ? "h-2 [&>div]:bg-purple-gradient" :
+                            index % 4 === 1 ? "h-2 [&>div]:bg-blue-gradient" :
+                            index % 4 === 2 ? "h-2 [&>div]:bg-orange-gradient" :
+                            "h-2"
                           }
                         />
                       </div>
