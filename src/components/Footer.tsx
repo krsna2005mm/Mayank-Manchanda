@@ -1,5 +1,7 @@
 
 import { ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,45 +9,85 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container">
+    <footer className="bg-card text-foreground py-12 relative overflow-hidden">
+      {/* Student-like doodles */}
+      <div className="absolute inset-0 -z-10 opacity-5">
+        <div className="grainy absolute inset-0"></div>
+        <div className="coffee-stain absolute top-10 right-10" style={{ transform: 'scale(1.5)' }}></div>
+        <div className="coffee-stain absolute bottom-20 left-20"></div>
+        <div className="pencil-line absolute top-1/3 left-1/4 h-20 w-40"></div>
+      </div>
+    
+      <div className="container relative">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-2xl font-display font-bold mb-4 text-gradient">M.M</h3>
-            <p className="text-gray-400 mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link to="/" className="text-2xl font-display font-bold mb-4 text-gradient inline-block">M.M</Link>
+            <p className="text-muted-foreground mb-4">
               Full Stack Developer & Computer Science Student specializing in building exceptional digital experiences.
             </p>
-            <p className="text-gray-400 font-hand text-lg transform -rotate-3 mb-4">
+            <p className="text-accent font-hand text-xl transform -rotate-3 mb-4">
               Available for freelance projects!
             </p>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+          >
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Freelance', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a 
-                    href={`#${link.toLowerCase()}`} 
-                    className="text-gray-400 hover:text-primary transition-colors"
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About', path: '/about' },
+                { name: 'Projects', path: '/projects' },
+                { name: 'Skills', path: '/skills' },
+                { name: 'Freelance', path: '/freelance' },
+                { name: 'Contact', path: '/contact' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path} 
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
             <h4 className="text-lg font-bold mb-4">Contact</h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-muted-foreground">
               <li>mayankmanchanda2005@gmail.com</li>
               <li>+91 8595673410</li>
               <li>New Delhi, India</li>
             </ul>
-          </div>
+            
+            {/* Student-like post-it note */}
+            <div className="mt-4 bg-accent/10 p-3 transform rotate-2 font-hand">
+              <p className="text-accent">Call me anytime!</p>
+            </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
             <h4 className="text-lg font-bold mb-4">Profiles</h4>
             <ul className="space-y-2">
               <li>
@@ -53,7 +95,7 @@ export default function Footer() {
                   href="https://github.com/mayank-1007" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   GitHub
                 </a>
@@ -63,7 +105,7 @@ export default function Footer() {
                   href="https://linkedin.com/in/mayankmanchanda2005" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -73,7 +115,7 @@ export default function Footer() {
                   href="https://codeforces.com/profile/mayank_1007" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Codeforces
                 </a>
@@ -83,26 +125,26 @@ export default function Footer() {
                   href="https://leetcode.com/mayank_1007/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   LeetCode
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border">
+          <p className="text-muted-foreground text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Mayank Manchanda. All rights reserved.
           </p>
           
           <button 
             onClick={scrollToTop}
             className="p-3 bg-primary/20 hover:bg-primary/30 rounded-full transition-colors"
+            aria-label="Scroll to top"
           >
             <ArrowUp className="h-6 w-6 text-primary" />
-            <span className="sr-only">Scroll to top</span>
           </button>
         </div>
       </div>

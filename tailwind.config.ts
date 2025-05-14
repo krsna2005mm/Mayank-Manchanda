@@ -26,39 +26,39 @@ export default {
 				hand: ['Caveat', 'cursive'],
 			},
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				ring: "hsl(var(--ring))",
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: '#8B5CF6',
-					foreground: '#FFFFFF'
+					DEFAULT: "hsl(var(--primary))",
+					foreground: "hsl(var(--primary-foreground))"
 				},
 				secondary: {
-					DEFAULT: '#D946EF',
-					foreground: '#FFFFFF'
+					DEFAULT: "hsl(var(--secondary))",
+					foreground: "hsl(var(--secondary-foreground))"
 				},
 				accent: {
-					DEFAULT: '#F97316',
-					foreground: '#FFFFFF',
-					blue: '#33C3F0'
+					DEFAULT: "hsl(var(--accent))",
+					foreground: "hsl(var(--accent-foreground))",
+					blue: "#33C3F0"
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))"
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: "hsl(var(--muted))",
+					foreground: "hsl(var(--muted-foreground))"
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))"
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))"
 				},
 			},
 			borderRadius: {
@@ -102,9 +102,9 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'purple-gradient': 'linear-gradient(90deg, #8B5CF6 0%, #D946EF 100%)',
-				'orange-gradient': 'linear-gradient(90deg, #F97316 0%, #FBBF24 100%)',
-				'blue-gradient': 'linear-gradient(90deg, #06B6D4 0%, #3B82F6 100%)',
+				'purple-gradient': 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))',
+				'orange-gradient': 'linear-gradient(90deg, #F59E0B, #EF4444)',
+				'blue-gradient': 'linear-gradient(90deg, #06B6D4, #3B82F6)',
 				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)',
 			}
 		}
