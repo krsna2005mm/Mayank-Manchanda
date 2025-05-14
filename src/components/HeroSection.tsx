@@ -1,31 +1,18 @@
 
 import { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 
-const AnimatedSphere = () => {
-  const sphereRef = useRef<any>(null);
-  
-  useFrame(({ clock }) => {
-    if (sphereRef.current) {
-      sphereRef.current.rotation.x = clock.getElapsedTime() * 0.2;
-      sphereRef.current.rotation.y = clock.getElapsedTime() * 0.3;
-    }
-  });
-
+// Creating a simplified visual element instead of the 3D sphere
+const GradientSphere = () => {
   return (
-    <Sphere ref={sphereRef} args={[1, 100, 200]} scale={2.2}>
-      <MeshDistortMaterial 
-        color="#8B5CF6" 
-        attach="material" 
-        distort={0.4} 
-        speed={2} 
-        roughness={0.5}
-      />
-    </Sphere>
+    <div className="relative w-full h-full flex items-center justify-center">
+      <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full bg-purple-600 opacity-30 animate-pulse"></div>
+      <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] rounded-full bg-pink-500 opacity-30 animate-pulse" style={{ animationDelay: '500ms' }}></div>
+      <div className="absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full bg-blue-500 opacity-30 animate-pulse" style={{ animationDelay: '1000ms' }}></div>
+      <div className="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded-full bg-gradient-to-br from-purple-600 via-pink-500 to-blue-500 opacity-70 animate-spin-slow"></div>
+    </div>
   );
 };
 
@@ -119,18 +106,7 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <Canvas>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <AnimatedSphere />
-            <OrbitControls 
-              enableZoom={false} 
-              enablePan={false}
-              rotateSpeed={0.5}
-              autoRotate
-              autoRotateSpeed={0.5}
-            />
-          </Canvas>
+          <GradientSphere />
         </motion.div>
       </div>
     </section>
