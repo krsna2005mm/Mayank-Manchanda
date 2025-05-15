@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
+import ExperienceSection from "@/components/ExperienceSection";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
@@ -29,25 +30,21 @@ export default function AboutPage() {
               <div className="absolute top-0 left-0 w-full h-full grainy"></div>
               
               {/* Student-like doodles */}
-              <div className="absolute -top-10 -right-10">
-                <svg width="100" height="100" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
-                </svg>
-              </div>
-              <div className="absolute bottom-0 left-20">
+              <div className="absolute top-10 right-20">
                 <svg width="80" height="80" viewBox="0 0 100 100">
-                  <path d="M20,50 L80,50" stroke="currentColor" strokeWidth="2" className="text-secondary/30" />
-                  <path d="M50,20 L50,80" stroke="currentColor" strokeWidth="2" className="text-secondary/30" />
+                  <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
+                  <path d="M30,50 L70,50 M50,30 L50,70" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
                 </svg>
               </div>
             </div>
             
             <p className="text-xl text-muted-foreground max-w-2xl">
-              Get to know more about my background, education, and skills
+              Learn about my background, education, skills and experiences
             </p>
           </motion.div>
         </div>
         <AboutSection />
+        <ExperienceSection />
       </motion.div>
       <Footer />
     </>
