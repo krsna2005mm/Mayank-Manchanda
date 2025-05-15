@@ -12,28 +12,46 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="relative"
+      className="relative group"
     >
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-md"
+        animate={{
+          boxShadow: [
+            "0 0 0 rgba(66, 240, 233, 0)",
+            "0 0 5px rgba(66, 240, 233, 0.5)",
+            "0 0 0 rgba(66, 240, 233, 0)",
+          ]
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+      />
+      
       <Sun 
-        className="h-5 w-5 absolute transition-all scale-100 rotate-0 dark:scale-0 dark:rotate-90" 
+        className="h-5 w-5 absolute transition-all scale-100 rotate-0 dark:scale-0 dark:rotate-90 dark:opacity-0" 
       />
       <Moon 
-        className="h-5 w-5 absolute transition-all scale-0 -rotate-90 dark:scale-100 dark:rotate-0" 
+        className="h-5 w-5 absolute transition-all scale-0 -rotate-90 dark:scale-100 dark:rotate-0 dark:opacity-100" 
       />
       <span className="sr-only">Toggle theme</span>
       
-      {/* Student-like doodle */}
+      {/* Gaming-style indicators */}
       <motion.div 
         className="absolute -top-3 -right-4 opacity-0 dark:opacity-100 transition-opacity"
-        initial={{ rotate: 0 }}
-        animate={{ rotate: [0, 10, -10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+        initial={{ scale: 0.8 }}
+        animate={{ scale: [0.8, 1.2, 0.8] }}
+        transition={{ duration: 3, repeat: Infinity }}
       >
-        <svg width="24" height="24" viewBox="0 0 100 100" className="text-yellow-300/50">
-          <path d="M50,10 L55,30 L75,30 L60,45 L65,65 L50,55 L35,65 L40,45 L25,30 L45,30 Z" 
-            fill="currentColor" stroke="currentColor" strokeWidth="1" />
+        <svg width="24" height="24" viewBox="0 0 100 100" className="text-primary">
+          <polygon points="50,10 61,35 90,35 65,55 75,80 50,65 25,80 35,55 10,35 39,35" 
+            fill="none" stroke="currentColor" strokeWidth="3" />
         </svg>
       </motion.div>
+      
+      <motion.div 
+        className="absolute -bottom-2 -left-2 w-2 h-2 rounded-full bg-primary hidden dark:block"
+        animate={{ opacity: [0.3, 1, 0.3] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      />
     </Button>
   );
 }

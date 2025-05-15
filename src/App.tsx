@@ -18,14 +18,21 @@ import NotFound from "./pages/NotFound";
 // Components
 import SplashScreen from "./components/SplashScreen";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
       <TooltipProvider>
         <Toaster />
-        <Sonner />
+        <Sonner theme="dark" closeButton position="top-center" />
         <SplashScreen />
         <BrowserRouter>
           <Routes>

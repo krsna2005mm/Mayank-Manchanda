@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,76 +10,91 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 252 59% 48%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 316 70% 50%;
-    --secondary-foreground: 0 0% 98%;
-    --accent: 24 97% 53%;
-    --accent-foreground: 0 0% 98%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 252 59% 48%;
-    --radius: 0.75rem;
+    --background: 210 25% 98%;
+    --foreground: 195 50% 15%;
+    --card: 210 25% 96%;
+    --card-foreground: 195 50% 15%;
+    --popover: 210 25% 96%;
+    --popover-foreground: 195 50% 15%;
+    --primary: 180 84% 45%;
+    --primary-foreground: 195 50% 15%;
+    --secondary: 252 100% 64%;
+    --secondary-foreground: 195 50% 15%;
+    --accent: 310 100% 60%;
+    --accent-foreground: 210 40% 96%;
+    --muted: 210 20% 90%;
+    --muted-foreground: 195 30% 35%;
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 180 84% 45%;
+    --radius: 0.5rem;
+    --angle: 0deg;
   }
  
   .dark {
-    --background: 240 10% 7%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 9.6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 9.6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 252 59% 54%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 316 70% 50%;
-    --secondary-foreground: 240 5.9% 10%;
-    --accent: 24 97% 53%;
-    --accent-foreground: 240 5.9% 10%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 252 59% 54%;
+    --background: 195 70% 5%;
+    --foreground: 210 40% 98%;
+    --card: 195 60% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 195 60% 7%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 180 84% 45%;
+    --primary-foreground: 195 70% 5%;
+    --secondary: 252 100% 64%;
+    --secondary-foreground: 195 70% 5%;
+    --accent: 310 100% 60%;
+    --accent-foreground: 195 70% 5%;
+    --muted: 195 50% 15%;
+    --muted-foreground: 210 20% 80%;
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 195 50% 15%;
+    --input: 195 50% 15%;
+    --ring: 180 84% 45%;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
   }
 }
 
 @layer base {
   body {
     @apply bg-background text-foreground font-sans;
+    background-size: 50px 50px;
+    background-image: var(--grid-pattern);
+  }
+
+  .dark body {
+    --grid-pattern: linear-gradient(to right, rgba(66, 240, 233, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(66, 240, 233, 0.05) 1px, transparent 1px);
+  }
+
+  body.light {
+    --grid-pattern: linear-gradient(to right, rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(20, 184, 166, 0.1) 1px, transparent 1px);
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-orange-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
   }
 
   .hero-gradient {
-    background: radial-gradient(circle at 50% 50%, rgba(103, 76, 209, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(66, 240, 233, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
   }
 
-  .bg-purple-gradient {
-    background: linear-gradient(to right, #674cd1, #bc4fc8);
+  .bg-cyber-gradient {
+    background: linear-gradient(to right, #42f0e9, #7c4dff);
   }
 
-  .bg-blue-gradient {
-    background: linear-gradient(to right, #3B82F6, #06B6D4);
-  }
-
-  .bg-orange-gradient {
-    background: linear-gradient(to right, #F59E0B, #EF4444);
+  .bg-neon-glow {
+    box-shadow: 0 0 10px rgba(66, 240, 233, 0.5), 0 0 20px rgba(66, 240, 233, 0.3);
   }
   
   .animate-spin-slow {
@@ -87,6 +103,10 @@
   
   .font-hand {
     font-family: 'Caveat', cursive;
+  }
+  
+  .font-gaming {
+    font-family: 'Orbitron', sans-serif;
   }
   
   .highlighter {
@@ -101,7 +121,7 @@
     bottom: 0;
     width: 100%;
     height: 0.5em;
-    background-color: rgba(253, 224, 71, 0.3);
+    background-color: rgba(66, 240, 233, 0.3);
     z-index: -1;
     transform: rotate(-2deg);
   }
@@ -136,6 +156,20 @@
     box-shadow: 0 0 15px hsla(var(--primary)/0.5);
   }
 
+  .cyber-border {
+    position: relative;
+  }
+  
+  .cyber-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(from var(--angle), #42f0e9, #7c4dff, #ff49db, #7c4dff, #42f0e9);
+    border-radius: calc(var(--radius) + 2px);
+    animation: rotate-border 4s linear infinite;
+    z-index: -1;
+  }
+  
   .grainy {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     opacity: 0.05;
@@ -192,6 +226,49 @@
     position: absolute;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 2 10 C 5 8, 15 12, 18 10' stroke='%23888888' stroke-width='1' fill='none' stroke-dasharray='1 3'/%3E%3C/svg%3E");
     opacity: 0.2;
+  }
+  
+  .radar-scan {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .radar-scan::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 45%, rgba(66, 240, 233, 0.5) 50%, transparent 55%);
+    animation: radar-scan 3s infinite linear;
+  }
+  
+  .pixel-corners {
+    clip-path: polygon(
+      0 10px, 10px 10px, 10px 0,
+      calc(100% - 10px) 0, calc(100% - 10px) 10px, 100% 10px,
+      100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
+      10px 100%, 10px calc(100% - 10px), 0 calc(100% - 10px)
+    );
+  }
+}
+
+@keyframes rotate-border {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@keyframes radar-scan {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(360deg);
   }
 }
 
