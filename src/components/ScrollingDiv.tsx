@@ -51,10 +51,19 @@ export default function ScrollingDiv({ className, children }: ScrollingDivProps)
     setInteractionCount(prev => prev + 1);
   };
 
+  // Calculate vertical position based on scroll
+  const verticalPosition = Math.min(100 + scrollPosition, window.innerHeight - 350);
+
   return (
     <motion.div
       ref={divRef}
-      className={`fixed right-0 top-1/4 h-80 w-40 z-10 rounded-l-2xl cyber-border ${className || ''}`}
+      className={`fixed right-0 z-10 rounded-l-2xl cyber-border ${className || ''}`}
+      style={{ 
+        top: `${verticalPosition}px`,
+        height: '80vh',
+        maxHeight: '400px',
+        width: '160px'
+      }}
       animate={{
         x: direction === 'left' 
           ? [0, -Math.min(scrollPosition / 5, maxOffset)]
