@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import InteractivePixel, { PixelGrid } from './InteractivePixel';
 
 interface ScrollingDivProps {
   className?: string;
@@ -12,6 +13,7 @@ export default function ScrollingDiv({ className, children }: ScrollingDivProps)
   const [direction, setDirection] = useState<'left' | 'right'>('left');
   const divRef = useRef<HTMLDivElement>(null);
   const maxOffset = window.innerWidth * 0.3;
+  const [interactionCount, setInteractionCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +47,10 @@ export default function ScrollingDiv({ className, children }: ScrollingDivProps)
     }
   }, [scrollPosition, direction, maxOffset]);
 
+  const handle3DInteraction = () => {
+    setInteractionCount(prev => prev + 1);
+  };
+
   return (
     <motion.div
       ref={divRef}
@@ -72,36 +78,100 @@ export default function ScrollingDiv({ className, children }: ScrollingDivProps)
           <div className="absolute top-0 left-0 w-full h-full bg-neon-grid bg-[length:10px_10px]"></div>
         </div>
         
-        {/* Content container */}
+        {/* Content container with 3D placeholder */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full p-4">
           {children || (
-            <div className="relative w-32 h-32">
-              <div className="absolute inset-0 radar-scan rounded-full border border-primary/50"></div>
-              <motion.div
-                className="absolute inset-8 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div 
-                className="absolute inset-0 flex items-center justify-center"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+            <>
+              <div 
+                className="relative w-32 h-32 cursor-pointer" 
+                onClick={handle3DInteraction}
               >
-                <span className="text-3xl font-gaming text-primary">M</span>
-              </motion.div>
-            </div>
+                {/* 3D Object Placeholder */}
+                <div className="absolute inset-0 perspective-[1000px] transform-gpu">
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-secondary/40 to-accent/40 border border-primary/50"
+                    style={{ transformStyle: 'preserve-3d' }}
+                    animate={{ 
+                      rotateY: [0, 360], 
+                      rotateX: [15, 15]
+                    }}
+                    transition={{ 
+                      rotateY: { duration: 10, repeat: Infinity, ease: "linear" },
+                      rotateX: { duration: 5, repeat: Infinity, ease: "easeInOut", yoyo: true }
+                    }}
+                  >
+                    {/* Front face */}
+                    <motion.div 
+                      className="absolute inset-0 bg-primary/20 backdrop-blur-sm border border-primary/30 flex items-center justify-center"
+                      style={{ transform: 'translateZ(16px)' }}
+                    >
+                      <span className="text-2xl font-gaming text-primary">3D</span>
+                    </motion.div>
+                    
+                    {/* Back face */}
+                    <motion.div 
+                      className="absolute inset-0 bg-secondary/20 backdrop-blur-sm border border-secondary/30 flex items-center justify-center"
+                      style={{ transform: 'rotateY(180deg) translateZ(16px)' }}
+                    >
+                      <span className="text-2xl font-gaming text-secondary">OBJ</span>
+                    </motion.div>
+                    
+                    {/* Top face */}
+                    <motion.div 
+                      className="absolute inset-x-0 h-[16px] bg-accent/20 backdrop-blur-sm border border-accent/30"
+                      style={{ transform: 'rotateX(90deg) translateZ(16px)', width: '100%', top: '-8px' }}
+                    />
+                    
+                    {/* Bottom face */}
+                    <motion.div 
+                      className="absolute inset-x-0 h-[16px] bg-accent/20 backdrop-blur-sm border border-accent/30"
+                      style={{ transform: 'rotateX(-90deg) translateZ(16px)', width: '100%', bottom: '-8px' }}
+                    />
+                    
+                    {/* Left face */}
+                    <motion.div 
+                      className="absolute inset-y-0 w-[16px] bg-primary/20 backdrop-blur-sm border border-primary/30"
+                      style={{ transform: 'rotateY(-90deg) translateZ(16px)', height: '100%', left: '-8px' }}
+                    />
+                    
+                    {/* Right face */}
+                    <motion.div 
+                      className="absolute inset-y-0 w-[16px] bg-primary/20 backdrop-blur-sm border border-primary/30"
+                      style={{ transform: 'rotateY(90deg) translateZ(16px)', height: '100%', right: '-8px' }}
+                    />
+                  </motion.div>
+                </div>
+                
+                {/* Radar scan effect */}
+                <div className="absolute inset-0 radar-scan rounded-full border border-primary/50 opacity-80"></div>
+              </div>
+              
+              {/* Interactive pixel grid underneath */}
+              <div className="mt-2">
+                <PixelGrid columns={5} rows={2} pixelSize={8} spacing={2} />
+              </div>
+              
+              <div className="mt-3 text-center">
+                <p className="text-xs font-gaming text-secondary">3D_OBJECT_READY</p>
+                {interactionCount > 0 && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-xs text-accent mt-1"
+                  >
+                    INTERACTIONS: {interactionCount}
+                  </motion.p>
+                )}
+                <motion.p 
+                  className="text-xs text-primary/70 mt-1"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  LOADING MODELS...
+                </motion.p>
+              </div>
+            </>
           )}
-          
-          <div className="mt-4 text-center">
-            <p className="text-xs font-gaming text-secondary">SCROLL TO NAVIGATE</p>
-            <motion.p 
-              className="text-xs text-accent mt-1"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              SYSTEM ONLINE
-            </motion.p>
-          </div>
         </div>
       </div>
     </motion.div>
