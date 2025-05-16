@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 
 // Components
 import SplashScreen from "./components/SplashScreen";
+import MiniGame from "./components/MiniGame";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <MiniGame />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

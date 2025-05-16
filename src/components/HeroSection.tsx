@@ -3,9 +3,9 @@ import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Download, Github, Linkedin, Mail, Code, Gamepad2 } from 'lucide-react';
-import Hologram3D from './Hologram3D';
-import { PixelGrid } from './InteractivePixel';
 import Astronaut3D from './Astronaut3D';
+import GitHubStats from './GitHubStats';
+import FreelanceBadge from './FreelanceBadge';
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -108,9 +108,19 @@ export default function HeroSection() {
               </p>
             </motion.div>
             
-            <p className="text-muted-foreground max-w-md mb-8 border-l-2 border-primary/50 pl-3">
+            {/* Added FreelanceBadge here */}
+            <div className="mb-4">
+              <FreelanceBadge />
+            </div>
+            
+            <p className="text-muted-foreground max-w-md mb-6 border-l-2 border-primary/50 pl-3">
               Building innovative web applications with modern technologies. Currently studying Computer Science at Delhi Technological University.
             </p>
+            
+            {/* Added GitHub stats */}
+            <div className="mb-8 flex items-center">
+              <GitHubStats username="mayank-1007" repo="cyber-portfolio" />
+            </div>
             
             {/* Binary code overlay */}
             <div className="absolute -left-10 top-1/3 opacity-10 text-primary font-mono text-xs">
@@ -191,25 +201,9 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Replaced CyberSphere with Astronaut3D */}
           <Astronaut3D />
         </motion.div>
       </div>
-      
-      {/* Interactive note */}
-      <motion.div 
-        className="absolute bottom-10 right-10 cyber-border font-gaming text-xs bg-card/80 p-3 transform rotate-6 hidden md:block"
-        whileHover={{ scale: 1.1, rotate: 0 }}
-        drag
-        dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
-      >
-        <div className="pixel-corners p-2">
-          <p className="text-primary">STATUS: ONLINE</p>
-          <p className="text-secondary mt-1">DRAG ME!</p>
-          <p className="text-accent mt-1">↓ SCROLL DOWN ↓</p>
-        </div>
-      </motion.div>
     </section>
   );
 }
