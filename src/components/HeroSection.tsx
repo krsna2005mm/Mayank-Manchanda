@@ -5,58 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Download, Github, Linkedin, Mail, Code, Gamepad2 } from 'lucide-react';
 import Hologram3D from './Hologram3D';
 import { PixelGrid } from './InteractivePixel';
-
-// Creating a cyberpunk-inspired visual element
-const CyberSphere = () => {
-  return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <div className="absolute w-full h-full flex items-center justify-center">
-        <div className="absolute w-[300px] h-[300px] md:w-[400px] md:h-[400px] border-2 border-primary/30 rounded-full animate-pulse"></div>
-        <div className="absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] border-2 border-secondary/30 rounded-full" style={{ animationDelay: '500ms' }}></div>
-        <div className="absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] border-2 border-accent/30 rounded-full" style={{ animationDelay: '1000ms' }}></div>
-        
-        {/* Interactive 3D element */}
-        <Hologram3D size="lg" rotationSpeed={3}>
-          <motion.div
-            className="text-primary font-gaming text-4xl"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            M
-          </motion.div>
-        </Hologram3D>
-        
-        {/* Animated grid lines */}
-        <div className="absolute inset-0 bg-neon-grid bg-[length:20px_20px] opacity-30"></div>
-        
-        {/* Radar scanning effect */}
-        <div className="absolute inset-0 rounded-full overflow-hidden">
-          <motion.div
-            className="absolute w-1/2 h-1/2 origin-bottom-left bg-gradient-to-r from-primary/10 to-transparent"
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-            style={{ borderRadius: "100% 0 0 0" }}
-          ></motion.div>
-        </div>
-      </div>
-      
-      {/* Interactive elements */}
-      <motion.div 
-        className="absolute top-[-30px] right-[-20px] transform rotate-12"
-        whileHover={{ scale: 1.2, rotate: 15 }}
-      >
-        <PixelGrid columns={5} rows={3} pixelSize={6} className="transform rotate-12" />
-      </motion.div>
-      
-      <motion.div 
-        className="absolute bottom-[-10px] left-[-30px] transform -rotate-12"
-        whileHover={{ scale: 1.2, rotate: -15 }}
-      >
-        <PixelGrid columns={4} rows={4} pixelSize={5} className="transform -rotate-12" />
-      </motion.div>
-    </div>
-  );
-};
+import Astronaut3D from './Astronaut3D';
 
 export default function HeroSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -242,7 +191,8 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <CyberSphere />
+          {/* Replaced CyberSphere with Astronaut3D */}
+          <Astronaut3D />
         </motion.div>
       </div>
       
