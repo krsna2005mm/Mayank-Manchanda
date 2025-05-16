@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 
 // Components
 import SplashScreen from "./components/SplashScreen";
+import ScrollingDiv from "./components/ScrollingDiv";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,7 @@ const App = () => (
         <Sonner theme="dark" closeButton position="top-center" />
         <SplashScreen />
         <BrowserRouter>
+          <ScrollingDiv />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
