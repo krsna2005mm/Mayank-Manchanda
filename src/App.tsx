@@ -36,6 +36,7 @@ const App = () => (
         <Sonner theme="dark" closeButton position="top-center" />
         <SplashScreen />
         <BrowserRouter>
+          <MiniGame />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<AboutPage />} />
@@ -45,7 +46,6 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <MiniGame />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

@@ -115,7 +115,7 @@ export default function Navbar() {
           })}
           
           <Link to="/contact">
-            <Button size="sm" className="ml-2 bg-purple-gradient hover:opacity-90 transition-opacity">
+            <Button size="sm" className="ml-2  bg-purple-gradient hover:opacity-90 transition-opacity">
               Hire Me
             </Button>
           </Link>
