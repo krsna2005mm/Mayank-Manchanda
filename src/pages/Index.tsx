@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Code, Briefcase, Book, Star, Users, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ProfileCard from "@/components/ProfileCard";
 
 const sections = [
   {
@@ -50,6 +51,28 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+
+      {/* Profile Card Section */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted/30">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+              About <span className="text-gradient">Me</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Full stack developer and computer science student with a passion for creating innovative web solutions
+            </p>
+          </motion.div>
+          
+          <ProfileCard />
+        </div>
+      </section>
 
       <section className="py-20">
         <div className="container">

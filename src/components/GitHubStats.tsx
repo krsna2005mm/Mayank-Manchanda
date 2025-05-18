@@ -5,7 +5,7 @@ import { Github, Star } from "lucide-react";
 
 interface GitHubStatsProps {
   username: string;
-  repo: string;
+  repo?: string;
   className?: string;
 }
 
@@ -22,6 +22,12 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
     const fetchStars = async () => {
       try {
         setIsLoading(true);
+        // If no repo is specified, just show GitHub icon without making API call
+        if (!repo) {
+          setIsLoading(false);
+          return;
+        }
+        
         const response = await fetch(`https://api.github.com/repos/${username}/${repo}`);
         
         if (!response.ok) {
@@ -55,12 +61,14 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
         {isLoading ? (
           <span className="text-muted-foreground text-sm">Loading stars...</span>
         ) : error ? (
-          <span className="text-muted-foreground text-sm">{error}</span>
-        ) : (
+          <span className="text-muted-foreground text-sm">GitHub</span>
+        ) : stars !== null ? (
           <div className="flex items-center gap-1">
             <span className="font-medium">{stars}</span>
             <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
           </div>
+        ) : (
+          <span className="text-sm">GitHub</span>
         )}
       </div>
     </motion.div>
