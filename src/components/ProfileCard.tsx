@@ -1,11 +1,10 @@
-
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import GitHubStats from "./GitHubStats";
 import LeetCodeStats from "./LeetCodeStats";
 import { Badge } from "@/components/ui/badge";
-import { User, Award, BadgeCheck } from "lucide-react";
+import { User, Award, BadgeCheck, Github } from "lucide-react";
 
 const ProfileCard = () => {
   return (
