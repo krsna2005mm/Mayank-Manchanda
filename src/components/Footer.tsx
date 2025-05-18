@@ -3,6 +3,8 @@ import { ArrowUp, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -166,22 +168,63 @@ export default function Footer() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
           >
-            <a 
-              href="https://www.buymeacoffee.com/mayankm1007" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex"
-            >
-              <Button 
-                className="bg-[#FFDD00] text-[#000000] hover:bg-[#FFDD00]/80 shadow-lg font-semibold"
-                size="sm"
-              >
-                <Coffee className="mr-2 h-4 w-4" />
-                Buy me a coffee
-              </Button>
-            </a>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: [0, -5, 5, -3, 3, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a 
+                          href="https://www.buymeacoffee.com/mayankm1007" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="block"
+                          aria-label="Buy me a coffee"
+                        >
+                          <div className="bg-[#FFDD00] text-black p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <Coffee className="h-8 w-8" />
+                          </div>
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent side="right" className="bg-[#FFDD00] text-black border-none">
+                        <span className="font-medium">Buy Me a Coffee</span>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </motion.div>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80 p-0 overflow-hidden shadow-xl border-none">
+                <div className="bg-gradient-to-r from-[#FEF7CD] to-[#FFDD00] p-4">
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="bg-white p-2 rounded-full">
+                      <Coffee className="h-6 w-6 text-[#FFDD00]" />
+                    </div>
+                    <h4 className="text-black font-bold text-xl">Support My Work</h4>
+                  </div>
+                  
+                  <p className="text-[#1A1F2C] text-sm mb-4">
+                    If you enjoy my projects or find them useful, consider buying me a coffee! 
+                    Your support helps me create more awesome content and tools.
+                  </p>
+                  
+                  <div className="bg-white/30 p-3 rounded-md mb-4 font-hand text-lg text-[#1A1F2C] transform -rotate-2">
+                    "Coding fueled by coffee and your support! ☕"
+                  </div>
+                  
+                  <Button 
+                    className="w-full bg-black text-[#FFDD00] hover:bg-black/80 font-medium"
+                    onClick={() => window.open("https://www.buymeacoffee.com/mayankm1007", "_blank")}
+                  >
+                    <Coffee className="mr-2 h-4 w-4" />
+                    Buy me a coffee
+                  </Button>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </motion.div>
           
           <button 
