@@ -11,20 +11,19 @@ export default function AboutPage() {
       <Navbar />
       <motion.div 
         className="pt-24 min-h-screen"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
         <div className="container my-10">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
             className="relative"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              About <span className="text-gradient cyber-border">Me</span>
+              About <span className="text-gradient">Me</span>
             </h1>
             
             <div className="w-full h-full absolute top-0 left-0 -z-10 opacity-10">

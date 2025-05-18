@@ -1,11 +1,11 @@
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, ArrowRight, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const projects = [
   {
@@ -55,14 +55,6 @@ const projects = [
   }
 ];
 
-const backgroundPatterns = [
-  "bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 to-transparent",
-  "bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/20 to-transparent",
-  "bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-accent/20 to-transparent",
-  "bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-secondary/10 to-transparent",
-  "bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-secondary/10 via-accent/10 to-transparent",
-];
-
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [open, setOpen] = useState(false);
@@ -73,7 +65,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900/60 backdrop-blur-sm">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -90,89 +82,72 @@ export default function ProjectsSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur">
-                <div className="aspect-video overflow-hidden relative">
+              <Card className="h-full overflow-hidden border-none shadow-md hover:shadow-xl transition-shadow">
+                <div className="aspect-video overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full p-4">
-                    <h3 className="text-xl font-bold text-white drop-shadow-md">{project.title}</h3>
-                  </div>
                 </div>
                 <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 3).map((tech, i) => (
-                      <motion.div key={i} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Badge variant="outline" className="bg-primary/10 hover:bg-primary/20 border-primary/30">
-                          {tech}
-                        </Badge>
-                      </motion.div>
+                      <Badge key={i} variant="outline" className="bg-primary/10 hover:bg-primary/20">
+                        {tech}
+                      </Badge>
                     ))}
                     {project.technologies.length > 3 && (
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Badge variant="outline" className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
-                          +{project.technologies.length - 3}
-                        </Badge>
-                      </motion.div>
+                      <Badge variant="outline" className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        +{project.technologies.length - 3} more
+                      </Badge>
                     )}
                   </div>
 
                   <div className="flex justify-between items-center">
                     <div className="flex gap-2">
-                      <motion.a 
+                      <a 
                         href={project.githubLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="p-2 text-muted-foreground hover:text-primary transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="p-2 text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
                       >
                         <Github className="h-5 w-5" />
                         <span className="sr-only">GitHub</span>
-                      </motion.a>
-                      <motion.a 
+                      </a>
+                      <a 
                         href={project.liveLink} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="p-2 text-muted-foreground hover:text-primary transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        className="p-2 text-gray-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors"
                       >
                         <ExternalLink className="h-5 w-5" />
                         <span className="sr-only">Live Demo</span>
-                      </motion.a>
+                      </a>
                     </div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-primary hover:text-primary/80 hover:bg-primary/5"
+                      onClick={() => handleShowDetails(project)}
                     >
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        className="font-medium text-primary hover:text-primary/80 hover:bg-primary/10"
-                        onClick={() => handleShowDetails(project)}
-                      >
-                        Details
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Button>
-                    </motion.div>
+                      Details
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -182,99 +157,51 @@ export default function ProjectsSection() {
       </div>
 
       {/* Project Details Dialog */}
-      <AnimatePresence>
-        {selectedProject && open && (
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogContent className="max-w-4xl p-0 overflow-hidden border border-primary/30 bg-card/95 backdrop-blur-md">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.3 }}
-                className={`relative ${backgroundPatterns[Math.floor(Math.random() * backgroundPatterns.length)]}`}
-              >
-                <button 
-                  onClick={() => setOpen(false)} 
-                  className="absolute top-4 right-4 z-50 bg-background/80 rounded-full p-1 hover:bg-background transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-                
-                <div className="relative h-64 sm:h-80 overflow-hidden">
-                  <div className="absolute inset-0">
-                    <img 
-                      src={selectedProject.image} 
-                      alt={selectedProject.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-                  </div>
-                  
-                  <div className="absolute bottom-0 left-0 p-8 w-full">
-                    <h2 className="text-3xl font-display font-bold text-foreground">
-                      {selectedProject.title}
-                    </h2>
-                  </div>
-                </div>
-                
-                <div className="p-8">
-                  <div className="mb-6">
-                    <p className="text-base text-muted-foreground mb-6">
-                      {selectedProject.longDescription}
-                    </p>
-                    
-                    <h4 className="text-lg font-semibold mb-3">Technologies</h4>
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {selectedProject.technologies.map((tech, i) => (
-                        <motion.div 
-                          key={i}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: i * 0.05 }}
-                          whileHover={{ y: -2, scale: 1.05 }}
-                        >
-                          <Badge className="bg-primary/10 hover:bg-primary/20 text-primary border-primary/30">
-                            {tech}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-4">
-                      <motion.a 
-                        href={selectedProject.liveLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <Button className="cyber-border relative overflow-hidden group">
-                          <span className="relative z-10">Live Demo</span>
-                          <span className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-80 group-hover:opacity-100 transition-opacity"></span>
-                          <ExternalLink className="ml-2 h-4 w-4 relative z-10" />
-                        </Button>
-                      </motion.a>
-                      
-                      <motion.a 
-                        href={selectedProject.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <Button variant="outline" className="border-primary hover:bg-primary/10 overflow-hidden group">
-                          <span className="relative z-10">View Code</span>
-                          <Github className="ml-2 h-4 w-4" />
-                        </Button>
-                      </motion.a>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </DialogContent>
-          </Dialog>
-        )}
-      </AnimatePresence>
+      {selectedProject && (
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent className="max-w-4xl">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-display font-bold">{selectedProject.title}</DialogTitle>
+              <DialogDescription className="text-base text-gray-600 dark:text-gray-400">
+                {selectedProject.longDescription}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-4">
+              <div className="aspect-video overflow-hidden rounded-md mb-6">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              <h4 className="text-lg font-semibold mb-2">Technologies Used:</h4>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedProject.technologies.map((tech, i) => (
+                  <Badge key={i} variant="outline" className="bg-primary/10 hover:bg-primary/20">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+              
+              <div className="flex gap-4">
+                <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer">
+                  <Button className="bg-purple-gradient hover:opacity-90">
+                    Live Demo
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+                <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="border-primary hover:bg-primary/10">
+                    View Code
+                    <Github className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
 }
