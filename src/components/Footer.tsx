@@ -1,7 +1,8 @@
 
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -158,6 +159,30 @@ export default function Footer() {
           <p className="text-muted-foreground text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Mayank Manchanda. All rights reserved.
           </p>
+          
+          {/* Buy Me a Coffee Button */}
+          <motion.div 
+            className="fixed bottom-6 left-6 z-30"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <a 
+              href="https://www.buymeacoffee.com/mayankm1007" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex"
+            >
+              <Button 
+                className="bg-[#FFDD00] text-[#000000] hover:bg-[#FFDD00]/80 shadow-lg font-semibold"
+                size="sm"
+              >
+                <Coffee className="mr-2 h-4 w-4" />
+                Buy me a coffee
+              </Button>
+            </a>
+          </motion.div>
           
           <button 
             onClick={scrollToTop}
