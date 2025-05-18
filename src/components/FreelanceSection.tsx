@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Briefcase, CheckCircle, Clock, DollarSign, Send, Users } from 'lucide-react';
+import { Briefcase, CheckCircle, Clock, DollarSign, LucideApple, LucideAppWindow, Send, University, Users, Webhook } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -20,19 +20,19 @@ export default function FreelanceSection() {
     {
       title: "Web Development",
       description: "From simple landing pages to complex full-stack applications",
-      icon: <Briefcase className="h-10 w-10 text-primary" />,
-      items: ["React/Next.js Websites", "E-commerce Solutions", "Portfolio Sites", "API Integration"]
+      icon: <Webhook className="h-10 w-10 text-primary" />,
+      items: ["React/Next.js Websites", "E-commerce Solutions", "Personal Projecs/ Portfolios", "API Integration"]
     },
     {
       title: "Mobile Development",
       description: "Cross-platform mobile applications with Flutter",
-      icon: <Users className="h-10 w-10 text-secondary" />,
+      icon: <LucideApple className="h-10 w-10 text-secondary" />,
       items: ["Flutter Applications", "Firebase Integration", "Push Notifications", "App Store Submission"]
     },
     {
       title: "Student Projects",
       description: "Help with academic and learning projects",
-      icon: <Clock className="h-10 w-10 text-accent" />,
+      icon: <University className="h-10 w-10 text-accent" />, 
       items: ["Project Consultation", "Code Reviews", "Assignment Help", "Mentoring"]
     }
   ];
@@ -146,7 +146,7 @@ export default function FreelanceSection() {
                 <div className="space-y-4">
                   <Button 
                     onClick={handleAvailabilityClick}
-                    className="w-full bg-purple-gradient hover:opacity-90"
+                    className="w-full   hover:opacity-90"
                   >
                     Check My Availability
                     <Send className="ml-2 h-4 w-4" />

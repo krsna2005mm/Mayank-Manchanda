@@ -29,7 +29,7 @@ const NotFound = () => {
           The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
         <Link to="/">
-          <Button className="bg-purple-gradient hover:opacity-90 transition-opacity">
+          <Button className="  hover:opacity-90 transition-opacity">
             <Home className="mr-2 h-4 w-4" />
             Return to Home
           </Button>

@@ -8,40 +8,40 @@ const skillCategories = [
     title: "Programming Languages",
     skills: [
       { name: "C++", level: 90 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Python", level: 80 },
-      { name: "Dart", level: 75 }
+      { name: "TypeScript", level: 70 },
+      { name: "JavaScript", level: 75 },
+      { name: "Python", level: 70 },
+      { name: "Dart", level: 50 }
     ]
   },
   {
     title: "Frontend",
     skills: [
-      { name: "Next.js", level: 90 },
-      { name: "React.js", level: 95 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "HTML/CSS", level: 90 },
-      { name: "Flutter", level: 75 }
+      { name: "Next.js", level: 85 },
+      { name: "React.js", level: 90 },
+      { name: "Tailwind CSS", level: 75 },
+      { name: "HTML/CSS", level: 80 },
+      { name: "Flutter", level: 50 }
     ]
   },
   {
     title: "Backend",
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Express.js", level: 85 },
+      { name: "Node.js", level: 65 },
+      { name: "Express.js", level: 65 },
       { name: "Django", level: 70 },
-      { name: "RESTful APIs", level: 90 },
-      { name: "GraphQL", level: 75 }
+      { name: "RESTful APIs", level: 85 },
+      { name: "GraphQL", level: 35 }
     ]
   },
   {
     title: "Databases & Tools",
     skills: [
-      { name: "MongoDB", level: 85 },
-      { name: "PostgreSQL", level: 80 },
+      { name: "MongoDB", level: 90 },
+      { name: "PostgreSQL", level: 75 },
       { name: "Git & GitHub", level: 90 },
-      { name: "Docker", level: 75 },
-      { name: "AWS", level: 70 }
+      { name: "Docker", level: 80 },
+      { name: "AWS", level: 55 }
     ]
   }
 ];
@@ -87,7 +87,7 @@ export default function SkillsSection() {
                         <Progress
                           value={skill.level}
                           className={
-                            index % 4 === 0 ? "h-2 [&>div]:bg-purple-gradient" :
+                            index % 4 === 0 ? "h-2 [&>div]: " :
                             index % 4 === 1 ? "h-2 [&>div]:bg-blue-gradient" :
                             index % 4 === 2 ? "h-2 [&>div]:bg-orange-gradient" :
                             "h-2"
@@ -131,7 +131,7 @@ export default function SkillsSection() {
                 ].map((concept, i) => (
                   <div 
                     key={i}
-                    className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex items-center justify-center text-center"
+                    className="bg-gray-100 dark:bg-gray-800 hover:opacity-70 p-3 rounded-lg flex items-center justify-center text-center"
                   >
                     <span className="text-sm font-medium">{concept}</span>
                   </div>

@@ -55,7 +55,7 @@ const Index = () => {
       {/* Profile Card Section */}
       <section className="py-16 bg-gradient-to-b from-background to-muted/30">
         <div className="container">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -69,7 +69,7 @@ const Index = () => {
               Full stack developer and computer science student with a passion for creating innovative web solutions
             </p>
           </motion.div>
-          
+           */}
           <ProfileCard />
         </div>
       </section>
@@ -165,7 +165,7 @@ const Index = () => {
                 Looking for a developer for your next project?
               </p>
               <Link to="/contact">
-                <Button className="mt-4 bg-purple-gradient hover:opacity-90">
+                <Button className="mt-4  hover:opacity-90">
                   Let's Work Together
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

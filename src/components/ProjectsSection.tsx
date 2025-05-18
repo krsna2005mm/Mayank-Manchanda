@@ -11,7 +11,7 @@ const projects = [
   {
     title: "RepHelp",
     description: "A high-efficiency reception management platform with seamless verifications, reducing wait time by about 35%. Integrated advanced OCR scanning and automated data entry from various national and international IDs.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: "images/rephelp.png",
     liveLink: "https://rephelp.netlify.app/",
     githubLink: "https://github.com/mayank-1007/RepHelp",
     technologies: ["Next.js 13.4", "React", "Appwrite", "Tailwind CSS", "TypeScript", "Twilio", "Rapi4AI OCR"],
@@ -20,7 +20,7 @@ const projects = [
   {
     title: "Crypt Beings",
     description: "A responsive multi-platform Flutter app with sleek UI and secure user authentication using Firebase. Enables users to create and manage wallets on Ethereum and Solana blockchains.",
-    image: "https://images.unsplash.com/photo-1639762681057-408e52192e55",
+    image: "images/cryptbeings.jpg",
     liveLink: "https://cryptbeings-apk.vercel.app/",
     githubLink: "https://github.com/mayank-1007/CryptBeings",
     technologies: ["Flutter", "Firebase", "Firebase Authentication", "Dart", "Ethereum", "Solana", "Web3.0", "Blockchain"],
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Int–O–view",
     description: "An AI-powered interview platform using advanced LLMs that simulates real interview scenarios using user's resumes and conversations, providing personalized feedback and insightful user dashboard.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
+    image: "images/interoview.png",
     liveLink: "https://int-o-view.vercel.app/",
     githubLink: "https://github.com/mayank-1007/Int-O-view",
     technologies: ["React.js", "Express.js", "Node.js", "Machine Learning", "JavaScript", "Python", "Large Language Models (LLMs)", "Llama model", "JWT", "TTS"],
@@ -38,7 +38,7 @@ const projects = [
   {
     title: "Coverage Determination",
     description: "Performed multivariate Time-Series forecasting on a Cloud Coverage Dataset using Transformer, Residual Modeling, and RNN models, achieving a good R1 score.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    image: "images/cloudcoverage.png",
     liveLink: "#",
     githubLink: "#",
     technologies: ["Image Segmentation", "Tensorflow", "Scikit-learn", "Python", "Machine Learning"],
@@ -186,7 +186,7 @@ export default function ProjectsSection() {
               
               <div className="flex gap-4">
                 <a href={selectedProject.liveLink} target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-purple-gradient hover:opacity-90">
+                  <Button className="  hover:opacity-90">
                     Live Demo
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Button>

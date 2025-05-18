@@ -198,7 +198,7 @@ export default function ContactSection() {
               
               <Button 
                 type="submit" 
-                className="w-full bg-purple-gradient hover:opacity-90"
+                className="w-full   hover:opacity-90"
                 disabled={isLoading}
               >
                 {isLoading ? (
