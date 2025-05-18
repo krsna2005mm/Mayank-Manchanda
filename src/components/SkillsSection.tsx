@@ -46,6 +46,30 @@ const skillCategories = [
   }
 ];
 
+const progressVariants = {
+  hidden: { width: 0 },
+  visible: level => ({
+    width: `${level}%`,
+    transition: { duration: 1.2, ease: "easeOut", delay: 0.3 }
+  })
+};
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 export default function SkillsSection() {
   return (
     <section id="skills" className="py-20">
@@ -69,33 +93,69 @@ export default function SkillsSection() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="h-full"
             >
-              <Card className="border-none shadow-md hover:shadow-lg transition-shadow h-full">
+              <Card className="border-none shadow-lg hover:shadow-xl transition-shadow h-full bg-card/80 backdrop-blur overflow-hidden">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6">{category.title}</h3>
-                  <div className="space-y-5">
+                  <motion.h3 
+                    className="text-xl font-bold mb-6 relative"
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {category.title}
+                    <motion.span
+                      className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary to-secondary"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "3rem" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                    />
+                  </motion.h3>
+                  
+                  <motion.div 
+                    className="space-y-5"
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
                     {category.skills.map((skill, i) => (
-                      <div key={i}>
+                      <motion.div key={i} variants={item}>
                         <div className="flex justify-between items-center mb-2">
                           <span className="font-medium">{skill.name}</span>
-                          <span className="text-sm text-gray-500">{skill.level}%</span>
+                          <motion.span 
+                            className="text-sm text-gray-500"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.2 + (i * 0.1) }}
+                          >
+                            {skill.level}%
+                          </motion.span>
                         </div>
-                        <Progress
-                          value={skill.level}
-                          className={
-                            index % 4 === 0 ? "h-2 [&>div]:bg-purple-gradient" :
-                            index % 4 === 1 ? "h-2 [&>div]:bg-blue-gradient" :
-                            index % 4 === 2 ? "h-2 [&>div]:bg-orange-gradient" :
-                            "h-2"
-                          }
-                        />
-                      </div>
+                        <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                          <motion.div
+                            className={
+                              index % 4 === 0 ? "h-full bg-gradient-to-r from-purple-600 to-purple-400" :
+                              index % 4 === 1 ? "h-full bg-gradient-to-r from-primary to-primary/70" :
+                              index % 4 === 2 ? "h-full bg-gradient-to-r from-orange-500 to-amber-400" :
+                              "h-full bg-gradient-to-r from-secondary to-secondary/70"
+                            }
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            custom={skill.level}
+                            variants={progressVariants}
+                          />
+                        </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -103,16 +163,38 @@ export default function SkillsSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-12"
         >
-          <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+          <Card className="border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-6">Advanced Concepts & Technologies</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              <motion.h3 
+                className="text-xl font-bold mb-6 relative"
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                Advanced Concepts & Technologies
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary to-secondary"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "3rem" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+              </motion.h3>
+              
+              <motion.div 
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+                variants={container}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {[
                   "Data Structures & Algorithms",
                   "Machine Learning",
@@ -129,14 +211,16 @@ export default function SkillsSection() {
                   "Computer Architecture",
                   "Figma UI/UX Design"
                 ].map((concept, i) => (
-                  <div 
+                  <motion.div 
                     key={i}
-                    className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg flex items-center justify-center text-center"
+                    variants={item}
+                    whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
+                    className="bg-card dark:bg-gray-800 p-3 rounded-lg flex items-center justify-center text-center border border-primary/10 hover:border-primary/30 transition-colors"
                   >
                     <span className="text-sm font-medium">{concept}</span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </CardContent>
           </Card>
         </motion.div>
