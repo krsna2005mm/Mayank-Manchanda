@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Avatar } from './ui/avatar';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -186,7 +187,8 @@ export default function Footer() {
                           aria-label="Buy me a coffee"
                         >
                           <div className="bg-[#FFDD00] text-black p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <Coffee className="h-8 w-8" />
+                            {/* <Coffee className="h-8 w-8" /> */}
+                            <img src="images/coffee-cup.png" alt="Coffee Cup" className=" -top-2 -right-2 w-8 h-8" />
                           </div>
                         </a>
                       </TooltipTrigger>
