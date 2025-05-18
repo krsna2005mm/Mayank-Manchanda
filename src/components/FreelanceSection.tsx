@@ -144,6 +144,7 @@ export default function FreelanceSection() {
                   Send me a message with your project details and I'll get back to you within 24 hours with availability and a free quote.
                 </p>
                 <div className="space-y-4">
+                  <a href="/contact">
                   <Button 
                     onClick={handleAvailabilityClick}
                     className="w-full   hover:opacity-90"
@@ -151,7 +152,8 @@ export default function FreelanceSection() {
                     Check My Availability
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
-                  <a href="#contact">
+                  </a>
+                  <a href="/contact">
                     <Button variant="outline" className="w-full">
                       Contact Me
                     </Button>

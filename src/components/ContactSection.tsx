@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Send, Instagram, X, Twitch, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,24 +15,56 @@ export default function ContactSection() {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+
+    const emailData = {
+      name: formData.name,
+      email: "mayankmanchanda2005@gmail.com",
+      subject: "Message from portfolio from - " + formData.email,
+      text: formData.message + "\n\nFrom: " + formData.name + "\nEmail: " + formData.email,
+    };
+
+    try {
+      const response = await fetch('https://mail-service-u2nh.onrender.com/mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
       });
-      setFormData({ name: '', email: '', message: '' });
+
+      if (response.ok) {
+        const result = await response.json();
+        toast({
+          title: "Message sent successfully!",
+          description: result.message || "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        const errorResult = await response.json().catch(() => ({ message: "An unknown error occurred." }));
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: errorResult.message || "Could not send the message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Network Error",
+        description: "Could not connect to the server. Please check your connection or try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -134,6 +165,24 @@ export default function ContactSection() {
                 >
                   <Mail className="h-6 w-6" />
                   <span className="sr-only">Email</span>
+                </a>
+                <a 
+                  href="https://www.instagram.com/mayank_mm05" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary p-3 rounded-full transition-colors"
+                >
+                  <Instagram className="h-6 w-6" />
+                  <span className="sr-only">Instagram</span>
+                </a>
+                <a 
+                  href="https://x.com/mayank_mm05" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-gray-200 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary p-3 rounded-full transition-colors"
+                >
+                  <Twitter className="h-6 w-6" />
+                  <span className="sr-only">X</span>
                 </a>
               </div>
             </div>

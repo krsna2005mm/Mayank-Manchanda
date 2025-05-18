@@ -17,7 +17,7 @@ const experiences = [
       "Authored a report on using ML to enhance economic policy analysis, showing superior analytics for datasets over 10³⁰ entries."
     ],
     certificate: "Certificate",
-    certificateLink: "#"
+    certificateLink: "https://drive.google.com/file/d/1wIsqgl-iQT353S2lLEZsWdZ9AW-VCsFY/view?usp=drive_link"
   },
   {
     title: "Robotics Training and Internship",
@@ -29,7 +29,7 @@ const experiences = [
       "Deployed 5+ Arduino-based projects based on Arduino and ESP8266(WIFI Module)."
     ],
     certificate: "Certificate",
-    certificateLink: "#"
+    certificateLink: "https://drive.google.com/file/d/1xHjZ0QTGpO0dTz5HZ21LnGZ6ZJq0Zag3/view?usp=drive_link"
   }
 ];
 

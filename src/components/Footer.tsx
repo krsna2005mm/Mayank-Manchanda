@@ -130,6 +130,26 @@ export default function Footer() {
                   LeetCode
                 </a>
               </li>
+              <li>
+                <a 
+                  href="https://x.com/mayank_mm05" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  X
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.instagram.com/mayank_mm05" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
             </ul>
           </motion.div>
         </div>

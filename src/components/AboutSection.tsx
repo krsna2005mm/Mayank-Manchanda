@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Award, BookOpen, Calendar, GraduationCap } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 export default function AboutSection() {
   return (
@@ -46,7 +47,7 @@ export default function AboutSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Delhi Technological University</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">B.Tech in Computer Science (CSE)</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">B.Tech in Computer Science (CSE) - Third Year</p>
                     <div className="flex items-center mt-1 text-sm text-gray-500 dark:text-gray-400">
                       <Calendar className="h-4 w-4 mr-1" />
                       August 2023 - May 2027
@@ -68,7 +69,7 @@ export default function AboutSection() {
                       <Calendar className="h-4 w-4 mr-1" />
                       March 2009 - March 2023
                     </div>
-                    <p className="text-sm mt-1">Grade XII: 93.8%, Grade X: 97.49%</p>
+                    <p className="text-sm mt-1">Grade XII: 93.8% <br/>Grade X: 97.49%</p>
                   </div>
                 </CardContent>
               </Card>
@@ -82,15 +83,22 @@ export default function AboutSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="text-2xl font-display font-bold mb-4">
-              Skills & Expertise
+              {/* Skills & Expertise */}
+              Profiles & Achievements
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              I specialize in building modern, responsive, and high-performance web applications
-              using cutting-edge technologies. My expertise spans front-end and back-end development,
-              with a focus on creating seamless user experiences.
+              <p>I specialize in building modern, responsive, and high-performance web applications
+              using cutting-edge technologies. My expertise spans full-stack development,
+              with a focus on creating seamless user experiences.</p>
+              <p>I have been actively participating in various coding competitions and hackathons,
+              where I have honed my problem-solving skills and gained practical experience in software development.</p>
+              {/* <p>
+              I am also a passionate learner, always eager to explore new technologies and frameworks.</p> */}
+              <p>
+              I have a strong foundation in data structures and algorithms, which I apply to solve complex problems efficiently.  </p>
             </p>
 
-            <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow mb-6">
+            {/* <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow mb-6">
               <CardContent className="p-6">
                 <div className="flex flex-wrap gap-2">
                   {[
@@ -108,7 +116,7 @@ export default function AboutSection() {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
 
             <div className="space-y-4">
               <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow">
@@ -119,9 +127,10 @@ export default function AboutSection() {
                   <div>
                     <h4 className="text-lg font-semibold">Contest Achievements</h4>
                     <ul className="text-sm text-gray-600 dark:text-gray-400 list-disc list-inside mt-2 space-y-1">
-                      <li>Specialist at Codeforces (1415)</li>
-                      <li>Knight at Leetcode (1864)</li>
-                      <li>3 Star at CodeChef (1606)</li>
+                      <li>Specialist at <Link to='https://codeforces.com/profile/mayankmanchanda2005' className="text-accent hover:underline dark:text-accent">Codeforces</Link> (1415)</li>
+                      <li>Knight at <Link to='https://leetcode.com/u/mayankmanchanda2005/' className="text-accent hover:underline dark:text-accent ">Leetcode</Link> (1864)</li>
+                      <li>3 Star at <Link to='https://www.codechef.com/users/mayank2005' className="text-accent hover:underline dark:text-accent">CodeChef</Link> (1606)</li>
+                      <li>Brown at <Link to='https://atcoder.jp/users/mayank_2005' className="text-accent hover:underline dark:text-accent">AtCoder</Link> (791)</li>
                       <li>Finalist (top 10 out of 500+ teams) at Brainwave hackathon</li>
                       <li>Selected for Internal Round of Smart India Hackathon (SIH-2024)</li>
                     </ul>

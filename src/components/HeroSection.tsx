@@ -114,13 +114,13 @@ export default function HeroSection() {
             </div>
             
             <p className="text-muted-foreground max-w-md mb-6 border-l-2 border-primary/50 pl-3">
-              Building innovative web applications with modern technologies. Currently studying Computer Science at Delhi Technological University.
+              Building innovative web applications with modern technologies. Currently studying Computer Science at Delhi Technological University - Third Year.
             </p>
             
             {/* Added GitHub stats */}
-            <div className="mb-8 flex items-center">
+            {/* <div className="mb-8 flex items-center">
               <GitHubStats username="mayank-1007" repo="cyber-portfolio" />
-            </div>
+            </div> */}
             
             {/* Binary code overlay */}
             <div className="absolute -left-10 top-1/3 opacity-10 text-primary font-mono text-xs">
@@ -140,13 +140,13 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <a href="#projects">
+            <a href="/projects">
               <Button className="bg-cyber-gradient hover:opacity-90 transition-opacity font-gaming animate-glow-pulse">
                 EXPLORE PROJECTS
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="border-primary hover:bg-primary/10 font-gaming group">
                 DOWNLOAD CV
                 <motion.div
