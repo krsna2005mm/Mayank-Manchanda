@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ErrorBoundary } from 'react-error-boundary';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/next"
 
 // Pages
 import Index from "./pages/Index";
@@ -44,6 +45,7 @@ const App = () => (
   <ErrorBoundary FallbackComponent={ErrorFallback}>
     
     <SpeedInsights/>
+    <Analytics/>
     <ApolloProvider client={client}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
