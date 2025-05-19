@@ -69,23 +69,23 @@ const LeetCodeStatsContent = ({ username }: { username: string }) => {
   // Extract stats from either real or mock data
   const totalSolved = userData.submitStats?.acSubmissionNum?.find(
     (item: any) => item.difficulty === "All"
-  )?.count || 387;
+  )?.count || 581;
   
   const easySolved = userData.submitStats?.acSubmissionNum?.find(
     (item: any) => item.difficulty === "Easy"
-  )?.count || 178;
+  )?.count || 244;
   
   const mediumSolved = userData.submitStats?.acSubmissionNum?.find(
     (item: any) => item.difficulty === "Medium"
-  )?.count || 182;
+  )?.count || 306;
   
   const hardSolved = userData.submitStats?.acSubmissionNum?.find(
     (item: any) => item.difficulty === "Hard"
-  )?.count || 27;
+  )?.count || 31;
   
-  const rank = userData.profile?.ranking || 15842;
-  const contestsAttended = userData.userContestRanking?.attendedContestsCount || 22;
-  const contestRating = userData.userContestRanking?.rating || 1851;
+  const rank = userData.profile?.ranking || 101998;
+  const contestsAttended = userData.userContestRanking?.attendedContestsCount || 26;
+  const contestRating = userData.userContestRanking?.rating || 1866;
   const contestPercentage = userData.userContestRanking?.topPercentage?.toFixed(1) || "5.2";
   const contestBadge = userData.userContestRanking?.badge?.name || "Knight";
   

@@ -41,7 +41,7 @@ const ContributionGraph: React.FC<ContributionGraphProps> = ({ username }) => {
   if (loading) {
     return (
       <div className="grid grid-cols-12 gap-1 min-h-[48px]">
-        {Array.from({ length: 48 }).map((_, i) => (
+        {Array.from({ length: 100 }).map((_, i) => (
           <div key={i} className="h-3 w-3 rounded-sm bg-muted animate-pulse" />
         ))}
       </div>
@@ -58,14 +58,14 @@ const ContributionGraph: React.FC<ContributionGraphProps> = ({ username }) => {
   const weeks = data?.user?.contributionsCollection?.contributionCalendar?.weeks || [];
   const flattenedDays: ContributionDay[] = [];
   
-  // Flatten the weeks into days and take only the most recent 48 days
+  // Flatten the weeks into days and take only the most recent 100 days
   weeks.forEach((week: any) => {
     week.contributionDays.forEach((day: ContributionDay) => {
       flattenedDays.push(day);
     });
   });
   
-  const recentDays = flattenedDays.slice(-48);
+  const recentDays = flattenedDays.slice(-100);
 
   return (
     <div className="grid grid-cols-12 gap-1">
@@ -114,7 +114,7 @@ const ContributionGraph: React.FC<ContributionGraphProps> = ({ username }) => {
 const MockContributionGraph = () => {
   return (
     <div className="grid grid-cols-12 gap-1">
-      {Array.from({ length: 48 }).map((_, i) => {
+      {Array.from({ length: 100 }).map((_, i) => {
         const intensity = Math.floor(Math.random() * 5); // 0-4
         let bgClass;
         switch (intensity) {

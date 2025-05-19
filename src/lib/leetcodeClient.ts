@@ -40,29 +40,28 @@ export default leetcodeClient;
 
 // Mock data to use when API fails
 export const leetcodeMockData = {
-  username: "mayank-1007",
+  username: "mayankmanchanda2005",
   profile: {
-    ranking: 15842,
+    ranking: 101998,
     reputation: 352,
     starRating: 4.8
   },
   badges: [
-    { id: "1", name: "Knight", displayName: "Knight" },
-    { id: "2", name: "100DaysOfCode", displayName: "100 Days of Code" },
-    { id: "3", name: "DailyChallengeStreak", displayName: "Daily Challenge" },
-    { id: "4", name: "TopContributor", displayName: "Top Contributor" }
+    { id: "1", name: "100DaysOfCode", displayName: "100 Days of Code" },
+    { id: "2", name: "DailyChallengeStreak", displayName: "Daily Challenge" },
+    { id: "3", name: "200DaysOfCode", displayName: "200 Daya of Code" }
   ],
   submitStats: {
     acSubmissionNum: [
-      { difficulty: "All", count: 387 },
-      { difficulty: "Easy", count: 178 },
-      { difficulty: "Medium", count: 182 },
-      { difficulty: "Hard", count: 27 }
+      { difficulty: "All", count: 581 },
+      { difficulty: "Easy", count: 244 },
+      { difficulty: "Medium", count: 306 },
+      { difficulty: "Hard", count: 31 }
     ]
   },
   userContestRanking: {
-    attendedContestsCount: 22,
-    rating: 1851,
+    attendedContestsCount: 26,
+    rating: 1866,
     topPercentage: 5.2,
     badge: {
       name: "Knight"
