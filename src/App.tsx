@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ErrorBoundary } from 'react-error-boundary';
 
 // Pages
 import Index from "./pages/Index";
@@ -27,8 +28,16 @@ const queryClient = new QueryClient({
     },
   },
 });
+const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error, resetErrorBoundary: () => void }) => (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+    </div>
+  );
 
 const App = () => (
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
       <TooltipProvider>
@@ -50,6 +59,7 @@ const App = () => (
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

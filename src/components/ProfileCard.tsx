@@ -24,7 +24,7 @@ const ProfileCard = () => {
             >
               <Avatar className="h-28 w-28 border-2 border-primary/30">
                 <AvatarImage 
-                  src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&q=80&w=500" 
+                  src="images/Profile.jpg" 
                   alt="Mayank Manchanda" 
                 />
                 <AvatarFallback>MM</AvatarFallback>
@@ -68,7 +68,7 @@ const ProfileCard = () => {
               </div>
               
               <div className="mt-3">
-                <GitHubStats username="mayank-1007" />
+                <GitHubStats username="mayank-1007" repo="mayank-1007" />
               </div>
             </div>
           </div>
