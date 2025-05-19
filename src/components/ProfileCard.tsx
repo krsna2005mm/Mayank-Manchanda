@@ -95,7 +95,7 @@ const ProfileCard = () => {
             </div>
             
             {/* LeetCode Stats */}
-            <LeetCodeStats username="mayank-1007" />
+            <LeetCodeStats username="mayankmanchanda2005" />
           </div>
         </CardContent>
       </Card>

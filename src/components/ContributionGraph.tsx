@@ -76,15 +76,15 @@ const ContributionGraph: React.FC<ContributionGraphProps> = ({ username }) => {
         // Define intensity levels based on contribution count
         // We'll use the original color scheme from the mock graph
         if (day.contributionCount === 0) {
-          bgClass = "bg-muted/40";
+          bgClass = "bg-muted/20";
         } else if (day.contributionCount <= 2) {
-          bgClass = "bg-primary/60";
+          bgClass = "bg-primary/40";
         } else if (day.contributionCount <= 4) {
-          bgClass = "bg-primary/80";
+          bgClass = "bg-primary/60";
         } else if (day.contributionCount <= 6) {
-          bgClass = "bg-primary/100";
+          bgClass = "bg-primary/80";
         } else {
-          bgClass = "bg-primary/120";
+          bgClass = "bg-primary/100";
         }
 
         return (
