@@ -30,39 +30,40 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error, resetErrorBoundary: () => void }) => (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  );
+  <div role="alert">
+    <p>Something went wrong:</p>
+    <pre>{error.message}</pre>
+    <button onClick={resetErrorBoundary}>Try again</button>
+  </div>
+);
 
 const App = () => (
   <ErrorBoundary FallbackComponent={ErrorFallback}>
-  <ApolloProvider client={client}>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
-        <TooltipProvider>
-          <Toaster />
-          <Sonner theme="dark" closeButton position="top-center" />
-          <SplashScreen />
-          <BrowserRouter>
-            <MiniGame />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/skills" element={<SkillsPage />} />
-              <Route path="/freelance" element={<FreelancePage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
-  </ApolloProvider>
+    <ApolloProvider client={client}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
+          <TooltipProvider>
+            <Toaster />
+            <Sonner theme="dark" closeButton position="top-center" />
+            <SplashScreen />
+            <BrowserRouter>
+              <MiniGame />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/skills" element={<SkillsPage />} />
+                <Route path="/freelance" element={<FreelancePage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ApolloProvider>
   </ErrorBoundary>
 );
 
