@@ -1,10 +1,14 @@
+
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ApolloProvider } from '@apollo/client';
+import client from '@/lib/apolloClient';
 import GitHubStats from "./GitHubStats";
 import LeetCodeStats from "./LeetCodeStats";
 import { Badge } from "@/components/ui/badge";
 import { User, Award, BadgeCheck, Github } from "lucide-react";
+import ContributionGraph from "./ContributionGraph";
 
 const ProfileCard = () => {
   return (
@@ -84,28 +88,10 @@ const ProfileCard = () => {
                 </div>
               </div>
               
-              {/* Simple Mock Contribution Graph */}
-              <div className="grid grid-cols-12 gap-1">
-                {Array.from({ length: 48 }).map((_, i) => {
-                  const intensity = Math.floor(Math.random() * 5); // 0-4
-                  let bgClass;
-                  switch (intensity) {
-                    case 0: bgClass = "bg-muted"; break;
-                    case 1: bgClass = "bg-primary/20"; break;
-                    case 2: bgClass = "bg-primary/40"; break;
-                    case 3: bgClass = "bg-primary/60"; break;
-                    case 4: bgClass = "bg-primary/80"; break;
-                    default: bgClass = "bg-muted";
-                  }
-                  return (
-                    <div 
-                      key={i} 
-                      className={`h-3 w-3 rounded-sm ${bgClass} hover:scale-125 transition-transform`} 
-                      title={`${intensity * 2} contributions`}
-                    />
-                  );
-                })}
-              </div>
+              {/* Real GitHub Contribution Graph */}
+              <ApolloProvider client={client}>
+                <ContributionGraph username="mayank-1007" />
+              </ApolloProvider>
             </div>
             
             {/* LeetCode Stats */}
