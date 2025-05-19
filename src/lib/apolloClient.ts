@@ -1,10 +1,11 @@
 
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { GITHUB_TOKEN } from './constants';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   headers: {
-    Authorization: `Bearer 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`,
+    Authorization: `Bearer ${GITHUB_TOKEN}`,
   },
   cache: new InMemoryCache(),
 });

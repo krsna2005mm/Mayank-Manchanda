@@ -7,26 +7,46 @@ import { Suspense, useEffect} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useTexture } from '@react-three/drei';
 
-export function Model(props) {
-  const group = React.useRef()
+export function Model() {
+  const group = React.useRef(null)
   const { scene, animations } = useGLTF('/Astronaut.glb')
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone)
-  const { actions } = useAnimations(animations, group)
+  const { actions } = useAnimations(animations, group);
+  const textures = useTexture('/texture.png');
+  const textures1 = useTexture('/texture.png');
+  const textures2 = useTexture('/texture_5.png');
+
+  const currentAnimate = "moon_walk";
 
   useEffect(() => {
-    console.log(actions);
-  }
-  , [actions])
+    if (currentAnimate && actions[currentAnimate]) {
+      actions[currentAnimate].reset().fadeIn(.5).play();
+    }
+    return () => {
+      if (currentAnimate && actions[currentAnimate]) {
+        actions[currentAnimate].fadeOut(0.5);
+      }
+    };
+  }, [currentAnimate]);
+
+
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...animations} dispose={null}>
       <group>
-        <group name="RootNode0" scale={1}>
+        <group name="RootNode0" scale={0.04}>
           <group name="geo1">
             <group name="astronaut2">
-              <skinnedMesh name="mesh_0" geometry={(nodes.mesh_0 as any).geometry} material={(nodes.mesh_0 as any).material} skeleton={(nodes.mesh_0 as any).skeleton} />
-              <skinnedMesh name="mesh_1" geometry={(nodes.mesh_1 as any).geometry} material={(nodes.mesh_1 as any).material} skeleton={(nodes.mesh_1 as any).skeleton} />
-              <skinnedMesh name="mesh_2" geometry={(nodes.mesh_2 as any).geometry} material={(nodes.mesh_2 as any).material} skeleton={(nodes.mesh_2 as any).skeleton} />
+              <skinnedMesh name="mesh_0" geometry={(nodes.mesh_0 as any).geometry} material={(nodes.mesh_0 as any).material} skeleton={(nodes.mesh_0 as any).skeleton} >
+                <meshStandardMaterial map={textures} map-flipY={false}/>  
+              </skinnedMesh>
+              <skinnedMesh name="mesh_1" geometry={(nodes.mesh_1 as any).geometry} material={(nodes.mesh_1 as any).material} skeleton={(nodes.mesh_1 as any).skeleton} >
+                <meshStandardMaterial map={textures1} map-flipY={false}/>  
+              </skinnedMesh>
+              <skinnedMesh name="mesh_2" geometry={(nodes.mesh_2 as any).geometry} material={(nodes.mesh_2 as any).material} skeleton={(nodes.mesh_2 as any).skeleton} >
+                <meshStandardMaterial map={textures2} map-flipY={false}/>  
+              </skinnedMesh>
             </group>
           </group>
           <group name="skeletal3">

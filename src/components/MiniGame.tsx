@@ -82,6 +82,7 @@ const MiniGame: React.FC = () => {
   }, [isActive, isMinimized, playerRadiusPercent]);
 
   const openGame = () => {
+    window.scrollTo(0, 0);
     setIsMinimized(false);
     setIsActive(false); // Require "Start Game" click
     setScore(0);
