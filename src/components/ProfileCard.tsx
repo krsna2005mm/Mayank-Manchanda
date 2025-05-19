@@ -65,10 +65,10 @@ const ProfileCard = () => {
                   <BadgeCheck className="h-3 w-3 mr-1" />
                   Verified
                 </Badge>
-                <Badge className="bg-accent/20 text-accent hover:bg-accent/30">
+                {/* <Badge className="bg-accent/20 text-accent hover:bg-accent/30">
                   <Award className="h-3 w-3 mr-1" />
                   Top Contributor
-                </Badge>
+                </Badge> */}
               </div>
               
               <div className="mt-3">
