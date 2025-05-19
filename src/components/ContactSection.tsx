@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { Mail_Service } from '@/lib/constants';
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -32,7 +33,7 @@ export default function ContactSection() {
     };
 
     try {
-      const response = await fetch('https://mail-service-u2nh.onrender.com/mail', {
+      const response = await fetch(`${Mail_Service}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
