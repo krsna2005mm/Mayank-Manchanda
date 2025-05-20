@@ -2,7 +2,6 @@
 import { defineConfig } from "file:///C:/Users/srishti/Desktop/all/Projects/funky-folio-genz-vibes/node_modules/vite/dist/node/index.js";
 import react from "file:///C:/Users/srishti/Desktop/all/Projects/funky-folio-genz-vibes/node_modules/@vitejs/plugin-react-swc/index.mjs";
 import path from "path";
-import { componentTagger } from "file:///C:/Users/srishti/Desktop/all/Projects/funky-folio-genz-vibes/node_modules/lovable-tagger/dist/index.js";
 var __vite_injected_original_dirname = "C:\\Users\\srishti\\Desktop\\all\\Projects\\funky-folio-genz-vibes";
 var vite_config_default = defineConfig(({ mode }) => ({
   server: {
@@ -11,7 +10,7 @@ var vite_config_default = defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === "development" && componentTagger()
+    mode === "development"
   ].filter(Boolean),
   resolve: {
     alias: {
