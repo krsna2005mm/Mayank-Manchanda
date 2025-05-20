@@ -8,6 +8,8 @@ import client from '@/lib/apolloClient';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ErrorBoundary } from 'react-error-boundary';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 
 // Pages
@@ -41,13 +43,13 @@ const ErrorFallback = ({ error, resetErrorBoundary }: { error: Error, resetError
 );
 
 const App = () => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    
-    
+  <ErrorBoundary FallbackComponent={ErrorFallback}>   
     <ApolloProvider client={client}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="dark" storageKey="cyber-portfolio-theme">
           <TooltipProvider>
+            <SpeedInsights/>
+            <Analytics/>
             <Toaster />
             <Sonner theme="dark" closeButton position="top-center" />
             <SplashScreen />
