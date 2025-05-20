@@ -29,7 +29,6 @@ export default function AboutPage() {
             <div className="w-full h-full absolute top-0 left-0 -z-10 opacity-10">
               <div className="absolute top-0 left-0 w-full h-full grainy"></div>
               
-              {/* Student-like doodles */}
               <div className="absolute top-10 right-20">
                 <svg width="80" height="80" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
