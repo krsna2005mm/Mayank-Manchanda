@@ -35,7 +35,7 @@ export default function AboutSection() {
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
               I'm currently pursuing my Bachelor's in Computer Science at Delhi Technological University, 
-              where I've maintained a CGPA of 9.15/10. My academic journey is complemented by practical 
+              where I've maintained a CGPA of 8.99/10. My academic journey is complemented by practical 
               experience in building innovative web and mobile applications.
             </p>
 
@@ -47,12 +47,12 @@ export default function AboutSection() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">Delhi Technological University</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">B.Tech in Computer Science (CSE) - Third Year</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">B.Tech in Computer Science (CSE)</p>
                     <div className="flex items-center mt-1 text-sm text-gray-500 dark:text-gray-400">
                       <Calendar className="h-4 w-4 mr-1" />
                       August 2023 - May 2027
                     </div>
-                    <p className="text-sm mt-1">CGPA: 9.15/10.00</p>
+                    <p className="text-sm mt-1">CGPA: 8.99/10.00</p>
                   </div>
                 </CardContent>
               </Card>
