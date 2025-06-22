@@ -103,14 +103,14 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-{/*         <motion.div 
+        <motion.div 
           className="relative flex items-center justify-center h-[300px] md:h-[500px]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Astronaut3D />
-        </motion.div> */}
+        </motion.div>
       </div>
     </section>
   );
