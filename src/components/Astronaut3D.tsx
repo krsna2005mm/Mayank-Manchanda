@@ -173,9 +173,9 @@ const Astronaut3D: React.FC<Astronaut3DProps> = ({ className = '' }) => {
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-56 h-2 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
 
 
-      <div className='absolute top-16 -right-32 '>
+{/*       <div className='absolute top-16 -right-32 '>
         <Astronaut />
-      </div>
+      </div> */}
     </div>
   );
 };
