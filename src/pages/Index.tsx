@@ -61,18 +61,18 @@ const Index = () => {
             <div className="max-w-3xl mx-auto">
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 I'm a Computer Science student at Delhi Technological University with a passion for 
-                building innovative web applications and solving complex problems. With a CGPA of 8.99 
+                building innovative web applications and solving complex problems. With a CGPA of 8.97 
                 and strong competitive programming background, I combine theoretical knowledge with 
                 practical development skills.
               </p>
               
               <div className="grid md:grid-cols-3 gap-4 mt-8">
                 <div className="text-center p-4">
-                  <div className="text-2xl font-bold text-primary">15+</div>
+                  <div className="text-2xl font-bold text-primary">7+</div>
                   <div className="text-sm text-muted-foreground">Projects Built</div>
                 </div>
                 <div className="text-center p-4">
-                  <div className="text-2xl font-bold text-primary">1400+</div>
+                  <div className="text-2xl font-bold text-primary">900+</div>
                   <div className="text-sm text-muted-foreground">Problems Solved</div>
                 </div>
                 <div className="text-center p-4">
@@ -282,7 +282,7 @@ const Index = () => {
                     </div>
                   </div>
                   <Badge variant="secondary" className="text-lg font-bold">
-                    8.99 CGPA
+                    8.97 CGPA
                   </Badge>
                 </div>
               </CardContent>
