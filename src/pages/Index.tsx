@@ -3,46 +3,41 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Briefcase, Book, Star, Users, Mail } from "lucide-react";
+import { ArrowRight, Code, Briefcase, Star, Users, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ProfileCard from "@/components/ProfileCard";
 
 const sections = [
   {
-    title: "About Me",
-    description: "Learn about my background, education, and skills that make me who I am today.",
-    icon: <Users className="h-10 w-10 text-primary" />,
-    link: "/about",
-    color: "bg-primary/10"
+    title: "About",
+    description: "Background, education, and achievements",
+    icon: <Users className="h-5 w-5" />,
+    link: "/about"
   },
   {
-    title: "My Projects",
-    description: "Explore my portfolio showcasing web applications, mobile apps, and other creative work.",
-    icon: <Code className="h-10 w-10 text-secondary" />,
-    link: "/projects",
-    color: "bg-secondary/10"
+    title: "Projects",
+    description: "Web applications and development work",
+    icon: <Code className="h-5 w-5" />,
+    link: "/projects"
   },
   {
-    title: "Skills & Expertise",
-    description: "Dive into my technical skills, programming languages, and technologies I work with.",
-    icon: <Star className="h-10 w-10 text-accent" />,
-    link: "/skills",
-    color: "bg-accent/10"
+    title: "Skills",
+    description: "Technical expertise and technologies",
+    icon: <Star className="h-5 w-5" />,
+    link: "/skills"
   },
   {
-    title: "Freelance Services",
-    description: "Professional services I offer as a freelancer for clients and businesses.",
-    icon: <Briefcase className="h-10 w-10 text-primary" />,
-    link: "/freelance",
-    color: "bg-primary/10"
+    title: "Services",
+    description: "Freelance and development services",
+    icon: <Briefcase className="h-5 w-5" />,
+    link: "/freelance"
   },
   {
-    title: "Get in Touch",
-    description: "Contact me for collaborations, projects or to discuss potential opportunities.",
-    icon: <Mail className="h-10 w-10 text-secondary" />,
-    link: "/contact",
-    color: "bg-secondary/10"
+    title: "Contact",
+    description: "Let's discuss your project",
+    icon: <Mail className="h-5 w-5" />,
+    link: "/contact"
   }
 ];
 
@@ -53,63 +48,31 @@ const Index = () => {
       <HeroSection />
 
       {/* Profile Card Section */}
-      <section className="py-16 bg-gradient-to-b from-background to-muted/30">
+      <section className="py-16 bg-muted/30">
         <div className="container">
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10"
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Full stack developer and computer science student with a passion for creating innovative web solutions
-            </p>
-          </motion.div>
-           */}
           <ProfileCard />
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="container">
+      {/* Navigation Section */}
+      <section className="py-16">
+        <div className="container max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16 relative"
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-              Explore My <span className="text-gradient">Portfolio</span>
+            <h2 className="text-3xl font-semibold tracking-tight mb-3">
+              Explore Portfolio
             </h2>
-
-            {/* Student-style annotation */}
-            <motion.div 
-              className="absolute -top-10 md:top-0 right-0 md:right-20 transform rotate-12 font-hand text-xl text-accent opacity-70"
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Take a look around!
-            </motion.div>
-            
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Navigate through different sections to learn more about my skills, projects, and services
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Navigate through different sections to learn more about my work and expertise
             </p>
-
-            {/* Random doodle */}
-            <div className="absolute -bottom-16 left-1/4 hidden md:block">
-              <svg width="100" height="60" viewBox="0 0 100 60" className="text-muted-foreground/20">
-                <path d="M0,30 C20,10 80,10 100,30" stroke="currentColor" strokeWidth="2" fill="none" />
-                <path d="M30,30 L70,30" stroke="currentColor" strokeWidth="1" strokeDasharray="5,5" />
-              </svg>
-            </div>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {sections.map((section, index) => (
               <motion.div
                 key={section.title}
@@ -117,38 +80,26 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="relative"
               >
-                <div className="relative group">
-                  <Link to={section.link}>
-                    <div className="h-full p-6 rounded-xl border border-border hover:border-primary/50 bg-card hover:bg-card/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                      <div className={`${section.color} p-4 rounded-full w-fit mb-4`}>
+                <Link to={section.link}>
+                  <div className="group p-6 rounded-lg border border-border hover:border-primary/50 bg-card transition-all duration-200 hover:shadow-sm">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-2 rounded-md bg-primary/10 text-primary">
                         {section.icon}
                       </div>
-                      
-                      <h3 className="text-xl font-bold mb-2">{section.title}</h3>
-                      <p className="text-muted-foreground mb-6">{section.description}</p>
-                      
-                      <div className="flex items-center text-primary font-medium">
-                        Explore
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </div>
+                      <h3 className="font-semibold">{section.title}</h3>
                     </div>
-                  </Link>
-                  
-                  {/* Student-like elements */}
-                  {Math.random() > 0.7 && (
-                    <div className="absolute -top-4 -right-4 hidden md:block">
-                      <svg width="50" height="50" viewBox="0 0 100 100" className="text-accent/20">
-                        <path d="M30,30 L70,70 M30,70 L70,30" stroke="currentColor" strokeWidth="4" />
-                      </svg>
+                    
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      {section.description}
+                    </p>
+                    
+                    <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all duration-200">
+                      <span>Learn more</span>
+                      <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
-                  )}
-                  
-                  {Math.random() > 0.6 && (
-                    <div className="pencil-line absolute h-10 w-20 -bottom-2 left-10"></div>
-                  )}
-                </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -160,19 +111,16 @@ const Index = () => {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-16 text-center"
           >
-            <div className="inline-block notebook-paper p-6 rounded-lg transform -rotate-1 relative">
-              <p className="font-hand text-xl">
-                Looking for a developer for your next project?
+            <div className="inline-block">
+              <p className="text-muted-foreground mb-4">
+                Ready to start your next project?
               </p>
               <Link to="/contact">
-                <Button className="mt-4  hover:opacity-90">
-                  Let's Work Together
+                <Button size="lg" className="shadow-sm">
+                  Get In Touch
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              
-              {/* Coffee stain */}
-              <div className="coffee-stain absolute -top-10 -right-10"></div>
             </div>
           </motion.div>
         </div>
